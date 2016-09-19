@@ -21,14 +21,18 @@
                             <th>IdCliente</th>
                             <th>Nomre</th>
                             <th>Apellido paterno</th>
-                            <th>Apellido materno</th>                            
+                            <th>Apellido materno</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <c:forEach items="${datos}" var="dato">
                         <tr>
-                             <td><c:out value="${dato.idCliente}"/></td>
+                            <td><c:out value="${dato.idCliente}"/></td>
                             <td><c:out value="${dato.nombre}"/></td>
-                             <td><c:out value="${dato.paterno}"/></td>
-                              <td><c:out value="${dato.materno}"/></td>
+                            <td><c:out value="${dato.paterno}"/></td>
+                            <td><c:out value="${dato.materno}"/></td>
+                            <td><a href='clienteGetData.htm?idCliente=<c:out value="${dato.idCliente}"/>'>Eliminar</a></td>
+                            <td><a href="clienteGetData.htm">Modificar</a></td>
                         </tr>
                         </c:forEach>
                 </table>

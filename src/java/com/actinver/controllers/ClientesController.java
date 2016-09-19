@@ -3,6 +3,7 @@ package com.actinver.controllers;
 import com.actinver.models.Cliente;
 import com.actinver.models.Conexion;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -47,4 +48,16 @@ public class ClientesController {
         mav.setViewName("clienteSuccess");
         return mav;
     }    
+    
+    @RequestMapping(value = "clienteGetData.htm", method = RequestMethod.GET)
+    public ModelAndView clienteGetData(HttpServletRequest request){
+        ModelAndView mav = new ModelAndView();
+        String idCliente = request.getParameter("idCliente");
+        mav.addObject("idCliente", idCliente);
+        mav.setViewName("clienteGetData");
+        return mav;
+    }
+    
+    
+    
 }
