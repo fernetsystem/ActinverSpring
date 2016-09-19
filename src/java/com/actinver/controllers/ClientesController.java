@@ -1,3 +1,25 @@
+package com.actinver.controllers;
+
+import com.actinver.models.Cliente;
+import com.actinver.models.Conexion;
+import java.util.List;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class ClientesController {
+    
+    private JdbcTemplate jdbcTemplate;
+                
+    public ClientesController() {
+        Conexion con = new Conexion();
+        jdbcTemplate = new JdbcTemplate(con.conectar());
+    }
+    
     @RequestMapping("clientes.htm")
     public ModelAndView clientes(){
         ModelAndView mav = new ModelAndView();       
@@ -7,6 +29,7 @@
         mav.setViewName("clientes");
         return mav;
     }
+    
     @RequestMapping(value="clienteRegistrar.htm", method = RequestMethod.GET)
     public ModelAndView clienteAddForm(){
         return new ModelAndView("clienteRegistrar","command", new Cliente());
