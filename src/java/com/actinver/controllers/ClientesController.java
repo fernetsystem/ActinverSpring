@@ -7,3 +7,7 @@
         mav.setViewName("clientes");
         return mav;
     }
+    @RequestMapping(value="clienteRegistrar.htm", method = RequestMethod.GET)
+    public ModelAndView clienteAddForm(){
+        return new ModelAndView("clienteRegistrar","command", new Cliente());
+    }
